@@ -1,3 +1,77 @@
-body{
-  background-color: aqua;
+* {
+  /* seletor universal */
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(assets/bg-mobile.jpg); /* usa um background feito no figma apenas importando a imagem */
+  background-repeat: no-repeat; /*  faz com que a imagem não se repita várias vezes */
+  background-position: top center; /*  centraliza a imagem no meio e a partir do topo da página */
+  background-size: cover; /*  faz a imagem ocupar a página toda */
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: white;
+}
+
+#container {
+  width: 360px; /* largura da caixa, px é a unidade de medida */
+  height: 712px; /*altura da caixa */
+  margin: auto; /* centraliza a caixa no meio da tela */
+  margin-top: 56px;
+  /* border: 1px solid red; /* cria a borda da caixa com a cor vermelha */
+}
+
+#profile {
+  text-align: center; /* podemos alinha a div assim, pois ela é inline */
+  padding: 24px;
+}
+
+#profile img {
+  /* display: block; com essa função eu deixo de ter um elemento inline e passo a ter um block para poder centralizar a imagem com o auto */
+  /*margin: auto; */
+  width: 112px;
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px; /* afastamento do top(foto que está em cima do texto) de 8px */
+}
+
+/* Links */
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px 24px;
+
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  text-decoration: none;
+  font-weight: bold;
+
+  transition: background 0.2s;
+}
+
+/* pseudo selector */
+ul li a:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid white;
 }
