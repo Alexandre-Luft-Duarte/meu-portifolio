@@ -4,9 +4,28 @@
   margin: 0;
   box-sizing: border-box;
 }
+:root {
+  --text-color: white;
+  --bg-url: url(assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(assets/MoonStars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(assets/bg-mobile-light.jpg); /* usa um background feito no figma apenas importando a imagem */
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.2);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(assets/Sun.svg); 
+}
 
 body {
-  background-image: url(assets/bg-mobile.jpg); /* usa um background feito no figma apenas importando a imagem */
+  background-image: var(--bg-url); /* usa um background feito no figma apenas importando a imagem */
   background-repeat: no-repeat; /*  faz com que a imagem não se repita várias vezes */
   background-position: top center; /*  centraliza a imagem no meio e a partir do topo da página */
   background-size: cover; /*  faz a imagem ocupar a página toda */
@@ -14,7 +33,7 @@ body {
 
 body * {
   font-family: "Inter", sans-serif;
-  color: white;
+  color: var(--text-color);
 }
 
 #container {
@@ -24,6 +43,7 @@ body * {
   margin-top: 56px;
   /* border: 1px solid red; /* cria a borda da caixa com a cor vermelha */
 }
+
 
 #profile {
   text-align: center; /* podemos alinha a div assim, pois ela é inline */
@@ -42,10 +62,49 @@ body * {
   margin-top: 8px; /* afastamento do top(foto que está em cima do texto) de 8px */
 }
 
+#switch {
+  position: relative;
+  width: 64px;
+
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
 /* Links */
 ul {
   list-style: none;
   display: flex;
+  padding: 24px 0;
+
   flex-direction: column;
   gap: 16px;
 }
@@ -57,8 +116,8 @@ ul li a {
 
   padding: 16px 24px;
 
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
   border-radius: 8px;
 
   backdrop-filter: blur(4px);
@@ -72,6 +131,34 @@ ul li a {
 
 /* pseudo selector */
 ul li a:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1.5px solid white;
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+#social_links {
+  display: flex;
+  justify-content: center;
+
+  padding: 24px 0;
+
+  font-size: 24px;
+}
+
+#social_links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#social_links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
 }
