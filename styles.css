@@ -21,11 +21,13 @@
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.2);
   --highlight-color: rgba(0, 0, 0, 0.1);
-  --switch-bg-url: url(assets/Sun.svg); 
+  --switch-bg-url: url(assets/Sun.svg);
 }
 
 body {
-  background-image: var(--bg-url); /* usa um background feito no figma apenas importando a imagem */
+  background-image: var(
+    --bg-url
+  ); /* usa um background feito no figma apenas importando a imagem */
   background-repeat: no-repeat; /*  faz com que a imagem não se repita várias vezes */
   background-position: top center; /*  centraliza a imagem no meio e a partir do topo da página */
   background-size: cover; /*  faz a imagem ocupar a página toda */
@@ -37,13 +39,13 @@ body * {
 }
 
 #container {
-  width: 360px; /* largura da caixa, px é a unidade de medida */
+  width: 100%; /* largura da caixa, px é a unidade de medida */
+  max-width: 588px;
   height: 712px; /*altura da caixa */
   margin: auto; /* centraliza a caixa no meio da tela */
   margin-top: 56px;
   /* border: 1px solid red; /* cria a borda da caixa com a cor vermelha */
 }
-
 
 #profile {
   text-align: center; /* podemos alinha a div assim, pois ela é inline */
@@ -81,12 +83,17 @@ body * {
   z-index: 1;
   transform: translateY(-50%);
   top: 50%;
+
+  animation: slide-back 0.2s;
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.2s forwards;
 }
+
+#switch button:hover {
+  
+} 
 
 #switch span {
   display: block;
@@ -161,4 +168,34 @@ footer {
   padding: 24px 0;
   text-align: center;
   font-size: 14px;
+}
+
+@media (min-widht: 700px) {
+  :root {
+    --bg-url: url(assets/bg-desktop.jpg);
+  }
+
+  :light {
+    --bg-url: url(assets/bg-desktop-light.jpg);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+
+  to {
+    left: 0;
+  }
 }
